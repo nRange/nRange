@@ -5,5 +5,20 @@
     "dependencies": {
         "jquery": "",
         "jquery-mousewheel": ""
-    }
+    },
+    "authors": [
+        "nRange <nRangejQuery@gmail.com> (http://github.com/nRange/nRange)"
+    ],
+    "description": "because <input type=\"range\"> sucks",
+    "moduleType": [
+        "globals"
+    ],
+    "keywords": [
+        "jquery",
+        "plugin",
+        "input",
+        "range"
+    ],
+    "license": "MIT",
+    "homepage": "http://nrange.github.io/nRange/"
 }
