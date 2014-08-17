@@ -1,0 +1,128 @@
+<head> <meta charset="UTF-8"></meta>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body>
+    <article>
+        <header>
+            <h1>nRange.js</h1>
+            because <pre>&lt;input type="range"></pre> sucks
+        </header>
+
+        <p>
+            A jQuery plugin that turns an input element into a
+            <a href='http://www.w3.org/wiki/HTML/Elements/input/range'>range</a>-like input with which you can select from a range of numerical values by either
+            <ul>
+                <li>Using your mouse-wheel*</li>
+                <li>Clicking and dragging up/down with any pointing device.
+                    Works great with touch-based devices, simply touch and drag.</li>
+                <li>Keyboard up/down arrow keys,
+                    for finer precision.</li>
+            </ul>
+        </p>
+
+        <div id='demo'>
+            <div>
+                <h2>Demo</h2>
+                <ul>
+                    <li>
+                        <div class='simple_input demo'>
+                            Simple input:
+                            <input id='simple_input' class='input' type='text' value='240'></input>
+                        </div>
+                    </li>
+                    <li>
+                        <div class='angular_input demo' ng-app='angular_input' ng-controller='angular_input'>
+                            With Angular, on a button:
+                            <button id='angular_input' class='input' >{{amount}}</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>Usage</h2>
+        <p>
+            <ol>
+                <li>Include the script file after jQuery, other dependencies
+                    <pre><code>
+            &lt;script src='/jquery.js'>&lt;/script>
+            &lt;script src='/jquery.mousewheel.js'>&lt;/script>
+            &lt;script src='/jquery.nRange.js'>&lt;/script>
+            </code></pre>
+            <p>* For usage with mouse-wheel, include <a href='http://plugins.jquery.com/mousewheel/'>the jQuery Mousewheel plugin</a>.</p>
+                </li>
+                <li>Initialize by invoking the method on the input selected by jQuery selector.
+                    <pre><code>
+            $('#input').range({
+                min: 1,
+                max: 1000,
+                step: 1,
+                $scope: $scope,
+                $scope_value_property_name: 'amount',
+                $scope_update_timeout: 200,
+                forceStep: true,
+            });
+            </code></pre>
+                </li>
+            </ol>
+        </p>
+
+        <h3>Options</h3>
+        <p>
+            There are following options that you can set by passing as parameters. They are all optional. They are exposed in $.fn.range.defaults
+            <ol>
+                <li>
+                    <h4>min</h4>
+                    Minimum value. Default = 0
+                </li>
+                <li>
+                    <h4>max</h4>
+                    Maximum value. Default = 1000
+                </li>
+                <li>
+                    <h4>step</h4>
+                    Step between each value. Default = 1
+                </li>
+                <li>
+                    <h4>$scope</h4>
+                    When using it on an element in Angular.js whose value is bound to a $scope variable, you'll either have to $watch for changes to the value yourself, or you can just pass the $scope here and it'll $apply the changes automatically. Default = null
+                </li>
+                <li>
+                    <h4>$scope_value_property_name</h4>
+                    Name of the $scope child property you used to bind the element to.
+                    <pre><code>
+                &lt;input ng-model='???'>
+                $scope['???']
+            </code></pre>
+                    Default = 'amount'
+                </li>
+                <li>
+                    <h4>$scope_update_timeout</h4>
+                    When $applying the changes in $scope, how much delay you want. Default = 10ms
+                </li>
+                <li>
+                    <h4>forceStep</h4>
+                    If true, the step will be forced. Default = false
+                </li>
+            </ol>
+        </p>
+    </article>
+
+    <script src='bower_components/jquery/dist/jquery.min.js'></script>
+    <script src='bower_components/jquery-mousewheel/jquery.mousewheel.min.js'></script>
+    <script src='bower_components/angular/angular.min.js'></script>
+    <script src='index.js'></script>
+    <script>
+    $(document).ready(function() {
+        // alert('Hi');
+        $('#simple_input').range();
+    });
+    var angular_input = angular.module('angular_input', [])
+        .controller('angular_input', function($scope) {
+            $scope.amount = 12;
+            $('#angular_input').range(0, 1000, 1, $scope);
+        });
+    </script>
+
+</body>

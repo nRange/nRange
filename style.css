@@ -1,0 +1,56 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: serif;
+}
+body {
+    font-family: 'Calibri', 'Arial', sans-serif;
+}
+header {
+    text-align: center;
+}
+header h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 0;
+    margin-top: .5em;
+}
+header pre, header p {
+    display: inline;
+    word-spacing: 50%;
+}
+#demo .demo {
+    margin-top: 1em;
+}
+.input {
+    text-align: center;
+    width: 4em;
+}
+#angular_input {
+    padding-left: -1em;
+    font-size: 1.5em;
+    /*background: url('/nRange/icon-up-down.png') no-repeat;*/
+    position: relative;
+}
+#angular_input:after {
+    content: '↕';
+    right: 0;
+    position: absolute;
+    font-size: .5em;
+    margin-top: .6em;
+    padding-left: .5em;
+    padding-right: .4em;
+    border-left: 1px dotted rgb(50%, 50%, 50%);
+}
+p {
+    line-height: 0 em;
+}
+/*
+* {
+	border: 1px solid red;
+}
+*/
+
+/*
+todo
+Fork me on github
+
+*/
